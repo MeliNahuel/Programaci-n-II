@@ -1,0 +1,35 @@
+import java.util.Scanner;
+
+public class App4 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Mostrar el menú de opciones
+        System.out.println("Menú de Usuario:");
+        System.out.println("1- Compras");
+        System.out.println("2- Ventas");
+        System.out.println("3- Informes");
+        System.out.print("Introduce una opción: ");
+
+        // Leer la opción del usuario
+        int opcion = scanner.nextInt();
+
+        // Imprimir la selección según la opción ingresada
+        switch (opcion) {
+            case 1:
+                System.out.println("Has seleccionado: Compras");
+                break;
+            case 2:
+                System.out.println("Has seleccionado: Ventas");
+                break;
+            case 3:
+                System.out.println("Has seleccionado: Informes");
+                break;
+            default:
+                System.out.println("Opción no válida.");
+                break;
+        }
+
+        scanner.close();
+    }
+}
