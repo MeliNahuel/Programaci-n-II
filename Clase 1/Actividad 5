@@ -1,0 +1,57 @@
+public class App5 {
+    public static void main(String[] args) {
+        // 1. Imprimir los números entre 30 y 50 con las tres estructuras repetitivas
+
+        System.out.println("Números entre 30 y 50 usando for:");
+        for (int i = 30; i <= 50; i++) {
+            System.out.print(i + " ");
+        }
+        System.out.println();
+
+        System.out.println("Números entre 30 y 50 usando while:");
+        int i = 30;
+        while (i <= 50) {
+            System.out.print(i + " ");
+            i++;
+        }
+        System.out.println();
+
+        System.out.println("Números entre 30 y 50 usando do-while:");
+        i = 30;
+        do {
+            System.out.print(i + " ");
+            i++;
+        } while (i <= 50);
+        System.out.println();
+
+        // 2. Imprimir solo los números pares entre 30 y 50 con las tres estructuras repetitivas
+
+        System.out.println("Números pares entre 30 y 50 usando for:");
+        for (int j = 30; j <= 50; j++) {
+            if (j % 2 == 0) {
+                System.out.print(j + " ");
+            }
+        }
+        System.out.println();
+
+        System.out.println("Números pares entre 30 y 50 usando while:");
+        int j = 30;
+        while (j <= 50) {
+            if (j % 2 == 0) {
+                System.out.print(j + " ");
+            }
+            j++;
+        }
+        System.out.println();
+
+        System.out.println("Números pares entre 30 y 50 usando do-while:");
+        j = 30;
+        do {
+            if (j % 2 == 0) {
+                System.out.print(j + " ");
+            }
+            j++;
+        } while (j <= 50);
+        System.out.println();
+    }
+}
