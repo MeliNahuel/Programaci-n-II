@@ -1,51 +1,25 @@
 import java.util.Scanner;
 
-public class App6 {
+public class App3 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int option;
 
-        do {
-            // Mostrar el menú
-            System.out.println("Menú:");
-            System.out.println("1. Compras");
-            System.out.println("2. Ventas");
-            System.out.println("3. Informe de Compras");
-            System.out.println("4. Informe de Ventas");
-            System.out.println("5. Salir");
-            System.out.print("Seleccione una opción: ");
-            
-            // Leer la opción del usuario
-            option = scanner.nextInt();
+        // Pedir el primer número
+        System.out.print("Introduce el primer número: ");
+        int numero1 = scanner.nextInt();
 
-            // Procesar la opción seleccionada
-            switch (option) {
-                case 1:
-                    System.out.println("Menú Compras");
-                    break;
-                case 2:
-                    System.out.println("Menú Ventas");
-                    break;
-                case 3:
-                    System.out.println("Informe de Compras:");
-                    for (int i = 100; i <= 110; i++) {
-                        System.out.println("Compra número: " + i);
-                    }
-                    break;
-                case 4:
-                    System.out.println("Informe de Ventas:");
-                    for (double i = 1000.0; i <= 1010.0; i++) {
-                        System.out.println("Venta con importe: " + i);
-                    }
-                    break;
-                case 5:
-                    System.out.println("Saliendo del sistema...");
-                    break;
-                default:
-                    System.out.println("Opción no válida. Intente nuevamente.");
-            }
-            System.out.println(); // Línea en blanco para separar iteraciones
-        } while (option != 5);
+        // Pedir el segundo número
+        System.out.print("Introduce el segundo número: ");
+        int numero2 = scanner.nextInt();
+
+        // Comparar los números e indicar cuál es el mayor
+        if (numero1 > numero2) {
+            System.out.println("El número mayor es: " + numero1);
+        } else if (numero2 > numero1) {
+            System.out.println("El número mayor es: " + numero2);
+        } else {
+            System.out.println("Ambos números son iguales.");
+        }
 
         scanner.close();
     }
