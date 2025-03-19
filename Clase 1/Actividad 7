@@ -1,0 +1,15 @@
+public class App7 {
+    public static void main(String[] args) {
+        // Declaración de los vectores
+        String[] nombres = {"Silla", "Mesa", "Tele"};
+        double[] precios = {100.0, 200.0, 120.0};
+
+        // Recorrer los vectores e imprimir los productos con precio mayor a 100
+        System.out.println("Productos con precio mayor a 100:");
+        for (int i = 0; i < nombres.length; i++) {
+            if (precios[i] > 100.0) {
+                System.out.println(nombres[i]);
+            }
+        }
+    }
+}
