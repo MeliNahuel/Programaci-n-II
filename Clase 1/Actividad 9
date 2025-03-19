@@ -1,0 +1,66 @@
+public class App9 {
+    public static void main(String[] args) {
+        // Declaración de la matriz
+        int[][] aux2 = {
+            { 9, 12, 18 },
+            { 14, 10, 30 },
+            { 9, 6, 3 }
+        };
+
+        // Verificar si alguna fila tiene todos los elementos múltiplos de 2
+        System.out.println("¿Alguna fila tiene todos los elementos múltiplos de 2? " + filaTodosMultiplosDe2(aux2));
+
+        // Verificar si alguna fila tiene algún elemento múltiplo de 2
+        System.out.println("¿Alguna fila tiene algún elemento múltiplo de 2? " + filaAlgunMultiploDe2(aux2));
+
+        // Verificar si alguna columna tiene todos los elementos múltiplos de 3
+        System.out.println("¿Alguna columna tiene todos los elementos múltiplos de 3? " + columnaTodosMultiplosDe3(aux2));
+    }
+
+    // Función para verificar si alguna fila tiene todos los elementos múltiplos de 2
+    public static boolean filaTodosMultiplosDe2(int[][] matriz) {
+        for (int[] fila : matriz) {
+            boolean todosMultiplos = true;
+            for (int num : fila) {
+                if (num % 2 != 0) {
+                    todosMultiplos = false;
+                    break;
+                }
+            }
+            if (todosMultiplos) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // Función para verificar si alguna fila tiene algún elemento múltiplo de 2
+    public static boolean filaAlgunMultiploDe2(int[][] matriz) {
+        for (int[] fila : matriz) {
+            for (int num : fila) {
+                if (num % 2 == 0) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    // Función para verificar si alguna columna tiene todos los elementos múltiplos de 3
+    public static boolean columnaTodosMultiplosDe3(int[][] matriz) {
+        int columnas = matriz[0].length;
+        for (int col = 0; col < columnas; col++) {
+            boolean todosMultiplos = true;
+            for (int fila = 0; fila < matriz.length; fila++) {
+                if (matriz[fila][col] % 3 != 0) {
+                    todosMultiplos = false;
+                    break;
+                }
+            }
+            if (todosMultiplos) {
+                return true;
+            }
+        }
+        return false;
+    }
+}
