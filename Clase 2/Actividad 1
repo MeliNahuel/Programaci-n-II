@@ -1,1 +1,27 @@
-hola
+public class Actividad1 {
+    public static void main(String[] args) {
+        // Declaración de la matriz
+        int[][] mat = {
+                {4, 5, 6},
+                {7, 8, 9},
+                {5, 6, 7}
+        };
+
+        // Variables para el cálculo del promedio
+        int suma = 0; // 1 instrucción
+        int n = mat.length; // 1 instrucción
+
+        // Recorrer la matriz y sumar los elementos
+        for (int i = 0; i < n; i++) { // n + 1 instrucciones (bucle externo)
+            for (int j = 0; j < n; j++) { // n * (n + 1) instrucciones (bucle interno)
+                suma += mat[i][j]; // n * n instrucciones
+            }
+        }
+
+        // Calcular el promedio
+        double promedio = (double) suma / (n * n); // 2 instrucciones
+
+        // Mostrar el resultado
+        System.out.println("El promedio de los elementos de la matriz es: " + promedio); // 1 instrucción
+    }
+}
