@@ -1,0 +1,176 @@
+import java.util.*;
+import java.util.Queue;
+import java.util.LinkedList;
+
+class Cliente {
+    private String nombre;
+    private int scoring;
+
+    public Cliente(String nombre, int scoring) {
+        this.nombre = nombre;
+        this.scoring = scoring;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public int getScoring() {
+        return scoring;
+    }
+
+    @Override
+    public String toString() {
+        return "Cliente{" + "nombre='" + nombre + '\'' + ", scoring=" + scoring + '}';
+    }
+}
+
+class GestionClientes {
+    private TreeMap<String, Cliente> clientes = new TreeMap<>();
+
+    public void agregarCliente(String nombre, int scoring) {
+        clientes.put(nombre, new Cliente(nombre, scoring));
+    }
+
+    public Cliente buscarPorNombre(String nombre) {
+        return clientes.get(nombre);
+    }
+
+    public List<Cliente> buscarPorScoring(int scoring) {
+        List<Cliente> resultado = new ArrayList<>();
+        for (Cliente cliente : clientes.values()) {
+            if (cliente.getScoring() == scoring) {
+                resultado.add(cliente);
+            }
+        }
+        return resultado;
+    }
+}
+
+class HistorialAcciones {
+    private Stack<String> historial = new Stack<>();
+
+    public void registrarAccion(String accion) {
+        historial.push(accion);
+    }
+
+    public String deshacerUltimaAccion() {
+        return historial.isEmpty() ? null : historial.pop();
+    }
+
+    public List<String> consultarHistorial() {
+        return new ArrayList<>(historial);
+    }
+}
+
+class GestionSolicitudes {
+    private Queue<String> solicitudes = new LinkedList<>();
+
+    public void agregarSolicitud(String solicitud) {
+        solicitudes.add(solicitud);
+    }
+
+    public String procesarSolicitud() {
+        return solicitudes.poll();
+    }
+
+    public List<String> consultarSolicitudes() {
+        return new ArrayList<>(solicitudes);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        GestionClientes gestionClientes = new GestionClientes();
+        HistorialAcciones historialAcciones = new HistorialAcciones();
+        GestionSolicitudes gestionSolicitudes = new GestionSolicitudes();
+
+        Scanner scanner = new Scanner(System.in);
+        int opcion;
+
+        do {
+            System.out.println("\n--- Menú Principal ---");
+            System.out.println("1. Agregar Cliente");
+            System.out.println("2. Buscar Cliente por Nombre");
+            System.out.println("3. Buscar Clientes por Scoring");
+            System.out.println("4. Registrar Acción");
+            System.out.println("5. Deshacer Última Acción");
+            System.out.println("6. Agregar Solicitud de Seguimiento");
+            System.out.println("7. Procesar Solicitud de Seguimiento");
+            System.out.println("8. Salir");
+            System.out.print("Seleccione una opción: ");
+            opcion = scanner.nextInt();
+            scanner.nextLine(); // Consumir el salto de línea
+
+            switch (opcion) {
+                case 1:
+                    System.out.print("Ingrese el nombre del cliente: ");
+                    String nombre = scanner.nextLine();
+                    System.out.print("Ingrese el scoring del cliente: ");
+                    int scoring = scanner.nextInt();
+                    gestionClientes.agregarCliente(nombre, scoring);
+                    historialAcciones.registrarAccion("Agregar cliente: " + nombre);
+                    System.out.println("Cliente agregado.");
+                    break;
+
+                case 2:
+                    System.out.print("Ingrese el nombre del cliente a buscar: ");
+                    nombre = scanner.nextLine();
+                    Cliente cliente = gestionClientes.buscarPorNombre(nombre);
+                    if (cliente != null) {
+                        System.out.println("Cliente encontrado: " + cliente);
+                    } else {
+                        System.out.println("Cliente no encontrado.");
+                    }
+                    break;
+
+                case 3:
+                    System.out.print("Ingrese el scoring a buscar: ");
+                    scoring = scanner.nextInt();
+                    System.out.println("Clientes encontrados: " + gestionClientes.buscarPorScoring(scoring));
+                    break;
+
+                case 4:
+                    System.out.print("Ingrese la acción a registrar: ");
+                    String accion = scanner.nextLine();
+                    historialAcciones.registrarAccion(accion);
+                    System.out.println("Acción registrada.");
+                    break;
+
+                case 5:
+                    String ultimaAccion = historialAcciones.deshacerUltimaAccion();
+                    if (ultimaAccion != null) {
+                        System.out.println("Última acción deshecha: " + ultimaAccion);
+                    } else {
+                        System.out.println("No hay acciones para deshacer.");
+                    }
+                    break;
+
+                case 6:
+                    System.out.print("Ingrese la solicitud de seguimiento: ");
+                    String solicitud = scanner.nextLine();
+                    gestionSolicitudes.agregarSolicitud(solicitud);
+                    System.out.println("Solicitud agregada.");
+                    break;
+
+                case 7:
+                    String solicitudProcesada = gestionSolicitudes.procesarSolicitud();
+                    if (solicitudProcesada != null) {
+                        System.out.println("Solicitud procesada: " + solicitudProcesada);
+                    } else {
+                        System.out.println("No hay solicitudes para procesar.");
+                    }
+                    break;
+
+                case 8:
+                    System.out.println("Saliendo del sistema...");
+                    break;
+
+                default:
+                    System.out.println("Opción no válida. Intente nuevamente.");
+            }
+        } while (opcion != 8);
+
+        scanner.close();
+    }
+}
